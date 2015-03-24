@@ -10,7 +10,7 @@ module.exports = {
 
   // Add one to the vote count for a given idea.
   upvote: function(req, res, next) {
-    updateVoteCount(req, res, 1);
+    updateVoteCount(req, res, req.body.gCount);
   },
 
   // Subtract one from the vote count for a given idea.
@@ -27,8 +27,8 @@ var updateVoteCount = function(req, res, changeValue) {
   // Bind the findOneandUpdate method to use promises
   var updateVotes = Q.nbind(Idea.findOneAndUpdate, Idea);
 
-  var query = { title: req.body.title };
-    
+  var query = { title: req.body.idea.title };
+
   updateVotes(query, { $inc: { votes: changeValue } })
     .then(function (idea) {
         res.send(idea);
