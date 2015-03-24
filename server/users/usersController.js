@@ -2,12 +2,12 @@
 // ---------------
 //
 // The User controller handles requests passed from the User router.
-var User = require('./userModel.js');
+var User = require('./usersModel.js');
 var jwt = require('jwt-simple');
 
 module.exports = {
 
-  // login: function(req, res, next) {
+  login: function(req, res, next) {
   //   var username = req.body.username;
   //   var password = req.body.password;
   //   User.findOne({username: username}, function(err, data){
@@ -27,11 +27,12 @@ module.exports = {
   //       return next('Invalid username');
   //     }
   //   });
-  // },
+  },
 
   signup: function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
+    console.log(username + password);
     User.findOne({username: username}, function(err, data){
       if (data){
         console.log('Username unavailable:', username);

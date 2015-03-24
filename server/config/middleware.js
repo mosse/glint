@@ -39,6 +39,6 @@ module.exports = function (app, express) {
   require('../ideas/ideaRoutes.js')(ideaRouter);
   require('../votes/voteRoutes.js')(voteRouter);
   require('../comments/commentRoutes.js')(commentRouter);
-  require('../comments/usersRoutes.js')(usersRouter);
+  require('../users/usersRoutes.js')(usersRouter);
 
 };
