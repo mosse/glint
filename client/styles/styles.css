@@ -65,7 +65,7 @@ button.idea-submit-button {
 }
 
 i.fa-sort-asc, i.fa-sort-desc {
-  font-size: 25px;
+  font-size: 50px;
 }
 
 i.fa-sort-asc:hover, i.fa-sort-desc:hover {
@@ -124,6 +124,8 @@ i.fa-comments:active {
 
 .vote-points {
   padding: 5px 0;
+  font-size: 20px;
+  margin-top: -10px;
 }
 
 .timestamp-author {

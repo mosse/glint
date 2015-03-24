@@ -7,14 +7,14 @@ angular.module('glint.votes', [])
   var self = this;
 
   // Display the user's upvotes and pass them along to the db.
-  self.upvote = function(idea){
+  self.upvote = function(idea, gCount){
     var ideaRef = idea;
-
+    idea = {idea: idea, gCount: gCount};
     idea = JSON.stringify(idea);
     Votes.upvote(idea)
       .then(function (response){
         // Update the specific idea's vote count.
-        ideaRef.votes++;
+        ideaRef.votes+= gCount;
       })
       .catch(function (error){
         console.error('upvote error', error);

@@ -103,7 +103,7 @@ glintServices.factory('Auth', function($http){
 });
 
 glintServices.factory('Comments', function ($http){
-  
+
   var createComment = function (comment){
     return $http({
       method: 'POST',

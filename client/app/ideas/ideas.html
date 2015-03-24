@@ -6,7 +6,7 @@
     <div class="form-idea animated fadeInUp">
       <input name="idea-input" type="text" class="form-control form-title-control" placeholder="Enter idea here" ng-model="ictrl.idea.title" required>
     </div>
-    
+
     <!-- Enter Description -->
     <div ng-if="ictrl.submitted" class="form-description ng-cloak">
       <textarea name="description-input" rows="3" class="form-control form-description-control" placeholder="Enter description here" ng-model="ictrl.idea.text"></textarea>
@@ -22,15 +22,14 @@
 </div>
 
 <!-- Idea Row -->
-<div class="row idea-post ng-cloak idea-post-repeat" ng-repeat="idea in ictrl.data.ideas track by idea._id"> 
+<div class="row idea-post ng-cloak idea-post-repeat" ng-repeat="idea in ictrl.data.ideas track by idea._id">
   <div class="col-md-1">
   </div>
 
   <div class="idea-container">
     <div class="col-md-1 upvote-downvote-wrapper" ng-controller="VotesCtrl as vctrl">
-      <i class="fa fa-sort-asc" ng-click="vctrl.upvote(idea)"></i> <!-- upvote -->
+      <i class="fa fa-sort-asc" ng-click="vctrl.upvote(idea, 5)"></i> <!-- upvote -->
       <div class="vote-points">{{ idea.votes }}</div>
-      <i class="fa fa-sort-desc" ng-click="vctrl.downvote(idea)"></i> <!-- downvote -->
     </div>
     <div class="col-md-8">
       <div class="idea-wrapper">
