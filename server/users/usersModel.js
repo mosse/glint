@@ -20,7 +20,7 @@ var UserSchema = new mongoose.Schema({
 
   wallet: {
     type: Number,
-    required: true
+    default: 30
   }
 });
 
@@ -37,7 +37,6 @@ UserSchema.pre('save', function (next) {
       console.log(err);
     } else {
       newUser.password = hash;
-      newUser.wallet = 30;
       next();
     }
   });
