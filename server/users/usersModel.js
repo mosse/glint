@@ -4,6 +4,7 @@
 // The User model defines the structure of all of the User documents created.
 
 var mongoose = require('mongoose');
+var bcrypt   = require('bcrypt-nodejs');
 
 var UserSchema = new mongoose.Schema({
   username: {
@@ -16,6 +17,17 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   }
+
+  wallet: {
+    type: Number,
+    required: true
+  }
 });
+
+UserSchema.methods.comparePasswords = function (candidatePassword, callback) {
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
+    callback(isMatch);
+  });
+};
 
 module.exports = mongoose.model('users', UserSchema);
