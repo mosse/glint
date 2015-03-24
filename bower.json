@@ -1,0 +1,16 @@
+{
+  "name": "adventuruous-starfish",
+  "version": "0.0.0",
+  "homepage": "https://github.com/HarmoniousWombat/glint",
+  "authors": [
+    "garrettjoecox <garrettjcox@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
