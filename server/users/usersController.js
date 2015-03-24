@@ -2,33 +2,33 @@
 // ---------------
 //
 // The User controller handles requests passed from the User router.
+var User = require('./userModel.js');
+var jwt = require('jwt-simple');
 
 module.exports = {
 
-  // Add one to the vote count for a given idea.
-  login: function(req, res, next) {
-    var username = req.body.username;
-    var password = req.body.password;
-    User.findOne({username: username}, function(err, data){
-      if (data){
-        data.comparePasswords(password, function(isMatch){
-          if (isMatch){
-            var token = jwt.encode(username, 'secret');
-            res.json({token: token, data: data});
-            console.log('Logged in:', username);
-          } else {
-            console.log('Incorrect password:', username);
-            return next('Incorrect password');
-          }
-        });
-      } else {
-        console.log('Invalid username:', username);
-        return next('Invalid username');
-      }
-    });
-  },
+  // login: function(req, res, next) {
+  //   var username = req.body.username;
+  //   var password = req.body.password;
+  //   User.findOne({username: username}, function(err, data){
+  //     if (data){
+  //       data.comparePasswords(password, function(isMatch){
+  //         if (isMatch){
+  //           var token = jwt.encode(username, 'secret');
+  //           res.json({token: token, data: data});
+  //           console.log('Logged in:', username);
+  //         } else {
+  //           console.log('Incorrect password:', username);
+  //           return next('Incorrect password');
+  //         }
+  //       });
+  //     } else {
+  //       console.log('Invalid username:', username);
+  //       return next('Invalid username');
+  //     }
+  //   });
+  // },
 
-  // Subtract one from the vote count for a given idea.
   signup: function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;

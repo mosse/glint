@@ -30,4 +30,17 @@ UserSchema.methods.comparePasswords = function (candidatePassword, callback) {
   });
 };
 
+UserSchema.pre('save', function (next) {
+  var newUser = this;
+  bcrypt.hash(this.password, null, null, function(err, hash){
+    if (err){
+      console.log(err);
+    } else {
+      newUser.password = hash;
+      newUser.wallet = 30;
+      next();
+    }
+  });
+});
+
 module.exports = mongoose.model('users', UserSchema);
