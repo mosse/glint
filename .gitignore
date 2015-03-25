@@ -37,4 +37,4 @@ azure.err
 *.publishsettings
 
 # Harmonious Wombat Stuff
-client/dist/*
+client/dist/build.min.js
