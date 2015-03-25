@@ -4,7 +4,7 @@
 
 // The pattern we're using here is the pattern we're using across all our controllers: the controllerAs syntax. This syntax is for Angular versions 1.2 and up, and means you don't have to use `$scope` anymore. Instead, inside of your HTML, you declare your controller with `ng-controller="IdeasCtrl as ictrl"` and reference your variables within that controlled scope as `ictrl.<varname>`. Additionally, instead of setting your properties within your controller to `$scope`, assign your controller's `this` to a variable called self and set your properties to that.
 angular.module('glint.ideas', [])
-.controller('IdeasCtrl', function (Ideas, $filter, Auth, $location){
+.controller('IdeasCtrl', function (Ideas, $rootScope, $filter, Auth, $location){
   var self = this;
   self.data = { ideas: [] };
   self.idea = {};
@@ -12,8 +12,10 @@ angular.module('glint.ideas', [])
   self.submitted = false;
   self.Auth = Auth;
 
-  // Will obtain the user's current board
-  var board = $location.path().split('/').slice(-1)[0];
+  // Refresh the ideas on route change
+  $rootScope.$on('$routeChangeSuccess', function(event) {
+    self.displayIdeas();
+  });
 
   self.logout = function(){
     self.Auth.user = null;
@@ -22,6 +24,7 @@ angular.module('glint.ideas', [])
 
   // Display all ideas currently in the database.
   self.displayIdeas = function(){
+    var board = $location.path().split('/').slice(-1)[0];
     Ideas.getIdeas(board)
       .then(function (results){
         results = $filter('orderBy')(results, 'votes', true);
