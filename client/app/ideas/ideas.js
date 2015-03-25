@@ -12,6 +12,9 @@ angular.module('glint.ideas', [])
   self.submitted = false;
   self.Auth = Auth;
 
+  // Will obtain the user's current board
+  var board = $location.path().split('/').slice(-1)[0];
+
   self.logout = function(){
     self.Auth.user = null;
     Auth.logout();
@@ -19,7 +22,7 @@ angular.module('glint.ideas', [])
 
   // Display all ideas currently in the database.
   self.displayIdeas = function(){
-    Ideas.getIdeas()
+    Ideas.getIdeas(board)
       .then(function (results){
         results = $filter('orderBy')(results, 'votes', true);
         self.data.ideas = results;
