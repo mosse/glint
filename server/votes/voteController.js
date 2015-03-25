@@ -27,9 +27,9 @@ var updateVoteCount = function(req, res, changeValue) {
   // Bind the findOneandUpdate method to use promises
   var updateVotes = Q.nbind(Idea.findOneAndUpdate, Idea);
 
-  var query = { title: req.body.idea.title };
+  var ideaQuery = { title: req.body.idea.title };
 
-  updateVotes(query, { $inc: { votes: changeValue } })
+  updateVotes(ideaQuery, { $inc: { votes: changeValue } })
     .then(function (idea) {
         res.send(idea);
       })
