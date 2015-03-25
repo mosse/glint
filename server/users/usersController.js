@@ -8,25 +8,25 @@ var jwt = require('jwt-simple');
 module.exports = {
 
   login: function(req, res, next) {
-  //   var username = req.body.username;
-  //   var password = req.body.password;
-  //   User.findOne({username: username}, function(err, data){
-  //     if (data){
-  //       data.comparePasswords(password, function(isMatch){
-  //         if (isMatch){
-  //           var token = jwt.encode(username, 'secret');
-  //           res.json({token: token, data: data});
-  //           console.log('Logged in:', username);
-  //         } else {
-  //           console.log('Incorrect password:', username);
-  //           return next('Incorrect password');
-  //         }
-  //       });
-  //     } else {
-  //       console.log('Invalid username:', username);
-  //       return next('Invalid username');
-  //     }
-  //   });
+    var username = req.body.username;
+    var password = req.body.password;
+    User.findOne({username: username}, function(err, data){
+      if (data){
+        data.comparePasswords(password, function(isMatch){
+          if (isMatch){
+            var token = jwt.encode(username, 'secret');
+            res.json({token: token, data: data});
+            console.log('Logged in:', username);
+          } else {
+            console.log('Incorrect password:', username);
+            return next('Incorrect password');
+          }
+        });
+      } else {
+        console.log('Invalid username:', username);
+        return next('Invalid username');
+      }
+    });
   },
 
   signup: function(req, res, next) {
