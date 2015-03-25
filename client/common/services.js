@@ -67,7 +67,7 @@ glintServices.factory('Votes', function($http){
   };
 });
 
-glintServices.factory('Auth', function($http){
+glintServices.factory('Auth', function($http, $window, $location){
 
   var login = function (user){
     return $http({
@@ -96,9 +96,21 @@ glintServices.factory('Auth', function($http){
     });
   };
 
+  var getUser = function(){
+    var data = JSON.parse($window.localStorage.getItem('com.glinted'));
+    return data ? data.data : null;
+  };
+
+  var logout = function(){
+    $window.localStorage.removeItem('com.glinted');
+    $location.path('/');
+  };
+
   return {
+    getUser: getUser,
     login: login,
-    signup: signup
+    signup: signup,
+    logout: logout
   };
 });
 
