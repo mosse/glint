@@ -2,14 +2,16 @@
 // ----------------
 //
 
-// The pattern we're using here is the pattern we're using across all our controllers: the controllerAs syntax. This syntax is for Angular versions 1.2 and up, and means you don't have to use `$scope` anymore. Instead, inside of your HTML, you declare your controller with `ng-controller="IdeasCtrl as ictrl"` and reference your variables within that controlled scope as `ictrl.<varname>`. Additionally, instead of setting your properties within your controller to `$scope`, assign your controller's `this` to a variable called self and set your properties to that. 
+// The pattern we're using here is the pattern we're using across all our controllers: the controllerAs syntax. This syntax is for Angular versions 1.2 and up, and means you don't have to use `$scope` anymore. Instead, inside of your HTML, you declare your controller with `ng-controller="IdeasCtrl as ictrl"` and reference your variables within that controlled scope as `ictrl.<varname>`. Additionally, instead of setting your properties within your controller to `$scope`, assign your controller's `this` to a variable called self and set your properties to that.
 angular.module('glint.ideas', [])
-.controller('IdeasCtrl', function (Ideas, $filter){
+.controller('IdeasCtrl', function (Ideas, $filter, Auth){
   var self = this;
   self.data = { ideas: [] };
   self.idea = {};
   self.postSuccess = false;
   self.submitted = false;
+  self.logout = Auth.logout;
+  self.user = Auth.getUser();
 
   // Display all ideas currently in the database.
   self.displayIdeas = function(){
@@ -35,7 +37,7 @@ angular.module('glint.ideas', [])
     self.idea.title = _.escape(self.idea.title);
     self.idea.text = _.escape(self.idea.text);
     var idea = JSON.stringify(self.idea);
-    
+
     // POST new idea, display confirmation, redisplay all ideas.
     Ideas.createIdea(idea)
       .then(function (response){
