@@ -35,3 +35,6 @@ bower_components/
 # Just Azure Things
 azure.err
 *.publishsettings
+
+# Harmonious Wombat Stuff
+client/dist/*
