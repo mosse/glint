@@ -11,11 +11,12 @@ module.exports = {
 
   // Retrieve all of the ideas that exist in the MongoDB database.
   allIdeas: function(req, res, next) {
+    var board = req.query.board;
 
     // Bind the Mongoose find method to the Idea model, so that the Q module can use promises with it.
     var findAllIdeas = Q.nbind(Idea.find, Idea);
 
-    findAllIdeas({})
+    findAllIdeas({board: board})
       .then(function(ideas) {
         res.json(ideas);
       })
