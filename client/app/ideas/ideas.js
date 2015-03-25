@@ -46,6 +46,7 @@ angular.module('glint.ideas', [])
     self.idea.title = _.escape(self.idea.title);
     self.idea.text = _.escape(self.idea.text);
     self.idea.created_by = self.Auth.user.username;
+    self.idea.board = $location.path().split('/').slice(-1)[0];
     // console.log(Auth.getUser());
     var idea = JSON.stringify(self.idea);
 
