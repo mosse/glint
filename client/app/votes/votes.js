@@ -12,7 +12,7 @@ angular.module('glint.votes', [])
       $location.path('/login');
       return;
     }
-    if (Auth.user.wallet-gCount < 0){
+    if (Auth.user.wallet-gCount < 0 || Auth.user.username === idea.created_by){
       return;
     }
     var ideaRef = idea;

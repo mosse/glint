@@ -67,9 +67,10 @@ glintServices.factory('Votes', function($http){
   };
 });
 
-glintServices.factory('Auth', function($http, $window, $http){
+glintServices.factory('Auth', function($http, $window){
 
-  var userString = $window.localStorage.getItem('com.glinted') || JSON.stringify({data:null});
+  var userString = $window.localStorage.getItem('com.glinted');
+  if (userString === 'undefined' || userString === null) userString = JSON.stringify({data:null});
 
   var user = JSON.parse(userString).data;
 
