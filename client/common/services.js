@@ -97,8 +97,11 @@ glintServices.factory('Auth', function($http, $window, $location){
   };
 
   var getUser = function(){
-    var data = JSON.parse($window.localStorage.getItem('com.glinted'));
-    return data ? data.data : null;
+    var storageString = $window.localStorage.getItem('com.glinted');
+    if (!storageString) {
+      return null;
+    }
+    return JSON.parse(storageString).data;
   };
 
   var logout = function(){

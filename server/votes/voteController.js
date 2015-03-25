@@ -5,6 +5,7 @@
 
 var Q = require('q');
 var Idea = require('../ideas/ideaModel.js');
+var User = require('../users/usersModel.js');
 
 module.exports = {
 
@@ -20,16 +21,19 @@ module.exports = {
 
 };
 
-
 // Update the vote count for an idea.
 var updateVoteCount = function(req, res, changeValue) {
 
   // Bind the findOneandUpdate method to use promises
   var updateVotes = Q.nbind(Idea.findOneAndUpdate, Idea);
+  var updateUserWallet = Q.nbind(User.findOneAndUpdate, User);
 
-  var query = { title: req.body.idea.title };
+  // Create queries for updating
+  var ideaQuery = { title: req.body.idea.title };
+  var userClickedQuery = { username: req.body.username };
+  var ideaOwnerQuery = { username: req.body.idea.created_by };
 
-  updateVotes(query, { $inc: { votes: changeValue } })
+  updateVotes(ideaQuery, { $inc: { votes: changeValue } })
     .then(function (idea) {
         res.send(idea);
       })
@@ -37,4 +41,22 @@ var updateVoteCount = function(req, res, changeValue) {
       console.log(err);
       next(err);
     });
+
+    updateUserWallet(userClickedQuery, { $inc: { wallet: -changeValue } })
+      .then(function (user) {
+        res.send(user);
+      })
+      .fail(function (err) {
+        console.log(err);
+        next(err);
+      });
+
+    updateUserWallet(ideaOwnerQuery, { $inc: { wallet: changeValue } })
+      .then(function (user) {
+        res.send(user);
+      })
+      .fail(function (err) {
+        console.log(err);
+        next(err);
+      });
 };
