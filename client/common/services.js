@@ -67,7 +67,11 @@ glintServices.factory('Votes', function($http){
   };
 });
 
-glintServices.factory('Auth', function($http, $window, $location){
+glintServices.factory('Auth', function($http, $window, $http){
+
+  var userString = $window.localStorage.getItem('com.glinted') || JSON.stringify({data:null});
+
+  var user = JSON.parse(userString).data;
 
   var login = function (user){
     return $http({
@@ -96,24 +100,21 @@ glintServices.factory('Auth', function($http, $window, $location){
     });
   };
 
-  var getUser = function(){
-    var storageString = $window.localStorage.getItem('com.glinted');
-    if (!storageString) {
-      return null;
-    }
-    return JSON.parse(storageString).data;
+  var update = function(){
+    var data = {data: user};
+    $window.localStorage.setItem('com.glinted', JSON.stringify(data));
   };
 
   var logout = function(){
     $window.localStorage.removeItem('com.glinted');
-    $location.path('/');
   };
 
   return {
-    getUser: getUser,
     login: login,
     signup: signup,
-    logout: logout
+    logout: logout,
+    user: user,
+    update: update
   };
 });
 
