@@ -5,7 +5,7 @@
 
 angular.module('glint.auth', [])
 
-.controller('AuthCtrl', function(Auth, $window, $location){
+.controller('AuthCtrl', function(Auth, $window, $location, Auth){
   var self = this;
   self.user = {};
 
