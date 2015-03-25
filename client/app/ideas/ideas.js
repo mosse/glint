@@ -11,6 +11,7 @@ angular.module('glint.ideas', [])
   self.postSuccess = false;
   self.submitted = false;
   self.Auth = Auth;
+  console.log('test');
 
   self.logout = function(){
     self.Auth.user = null;
