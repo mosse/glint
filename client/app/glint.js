@@ -12,6 +12,7 @@ var app = angular.module('glint', [
   'glint.auth',
   'glint.comments',
   'glint.details',
+  'glint.detailsView',
   'ngAnimate',
   'ngRoute',
   'mgcrea.ngStrap',
