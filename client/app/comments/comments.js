@@ -8,7 +8,7 @@ angular.module('glint.comments', [])
 .controller('CommentsCtrl', function (Comments, Auth){
   var self = this;
   self.comment = {};
-  self.comments = [''];
+  self.comments = [];
   self.viewingComments = false;
 
   // Submit eventual form inputs to the db and display something back to the user on success.
@@ -21,7 +21,7 @@ angular.module('glint.comments', [])
     self.comment = {};
     Comments.createComment(comment)
       .then(function (response){
-        self.comments.unshift(response);
+        self.comments.push(response);
         // Display the supplied comment back to the user who submitted it.
       })
       .catch(function (error){
@@ -35,7 +35,7 @@ angular.module('glint.comments', [])
       self.viewingComments = true;
       Comments.getComments(idea_id)
         .then(function (response){
-          self.comments = response.reverse();
+          self.comments = response;
           // Display this idea's comments.
         })
         .catch(function (error){

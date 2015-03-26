@@ -11,10 +11,29 @@ angular.module('glint.ideas', [])
   self.postSuccess = false;
   self.submitted = false;
   self.Auth = Auth;
+  self.board = true;
+  self.title = "What's your great idea?";
 
   // Refresh the ideas on route change
   $rootScope.$on('$routeChangeSuccess', function(event) {
-    self.displayIdeas();
+    var args = $location.path().split('/');
+    if (args.length > 2){
+      var query = {};
+      if (args[1] === 'user') {
+        args[1] = 'created_by';
+        self.board = false;
+        self.title = args[2] + "'s ideas";
+      } else {
+        self.board = true;
+        self.title = args[2] + " idea board";
+      }
+      query[args[1]] = args[2];
+      self.displayIdeas(query);
+    } else {
+      self.board = true;
+      self.title = "What's your great idea?";
+      self.displayIdeas({board:'global'});
+    }
   });
 
   self.logout = function(){
@@ -23,9 +42,8 @@ angular.module('glint.ideas', [])
   };
 
   // Display all ideas currently in the database.
-  self.displayIdeas = function(){
-    var board = $location.path().split('/').slice(-1)[0];
-    Ideas.getIdeas(board)
+  self.displayIdeas = function(query){
+    Ideas.getIdeas(query)
       .then(function (results){
         results = $filter('orderBy')(results, 'votes', true);
         self.data.ideas = results;
@@ -53,7 +71,7 @@ angular.module('glint.ideas', [])
     self.idea.text = _.escape(self.idea.text);
     self.idea.created_by = self.Auth.user.username;
     self.idea.board = $location.path().split('/').slice(-1)[0];
-    // console.log(Auth.getUser());
+    if (!self.idea.board) self.idea.board = 'global';
     var idea = JSON.stringify(self.idea);
 
     // POST new idea, display confirmation, redisplay all ideas.
@@ -65,7 +83,8 @@ angular.module('glint.ideas', [])
         self.submitted = false;
         // Clear form fields after submit.
         self.idea = {};
-        self.displayIdeas();
+        self.data.ideas.push(response);
+        // self.displayIdeas();
       })
       .catch(function (error){
         console.error('createIdea error', error);
