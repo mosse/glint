@@ -42,8 +42,17 @@ body {
   font-weight: bold;
 }
 
+.post-comment {
+  text-align: center;
+}
+
 input.form-control {
   width: 650px !important;
+}
+
+input.comment-form-control {
+  display: inline-block;
+  width: 60% !important;
 }
 
 textarea.form-description-control {
@@ -79,13 +88,13 @@ i.fa-sort-asc:active, i.fa-sort-desc:active {
 }
 
 .idea-container:hover {
-  cursor: pointer;
 }
 
 .idea-title {
   margin-top: 0;
   font-family: 'Lato', sans-serif;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .idea-title:hover {
@@ -133,6 +142,13 @@ i.fa-comments:active {
 }
 
 .user-feedback-container {
+  background-color: #046380;
+  text-align: center;
+  padding: 0.5em 0;
+  color: white;
+}
+
+.no-comment-container {
   background-color: #046380;
   text-align: center;
   padding: 0.5em 0;
@@ -283,6 +299,75 @@ a.glint-logo-icon:link{
 }
 
 .post-idea-animation.ng-leave-active {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.open-comment-animation.ng-enter {
+  transition: 0.75s;
+  opacity: 0;
+  height: 0px;
+}
+
+.open-comment-animation.ng-enter-active {
+  height: 98px;
+  opacity: 1;
+}
+
+.open-comment-animation.ng-leave {
+  transition: 1.0s;
+  height: 98px;
+  opacity: 1;
+}
+
+.open-comment-animation.ng-leave-active {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.comment-animation.ng-enter {
+  transition: 0.75s;
+  opacity: 0;
+  height: 0px;
+}
+
+.comment-animation.ng-enter-active {
+  height: 20px;
+  opacity: 1;
+}
+
+.comment-animation.ng-leave {
+  transition: 1.0s;
+  height: 20px;
+  opacity: 1;
+}
+
+.comment-animation.ng-leave-active {
+  height: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.post-comment-animation.ng-enter {
+  transition: 0.75s;
+  opacity: 0;
+  height: 0px;
+}
+
+.post-comment-animation.ng-enter-active {
+  height: 98px;
+  opacity: 1;
+}
+
+.post-comment-animation.ng-leave {
+  transition: 1.0s;
+  height: 98px;
+  opacity: 1;
+}
+
+.post-comment-animation.ng-leave-active {
   height: 0;
   padding: 0;
   opacity: 0;

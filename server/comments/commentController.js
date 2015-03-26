@@ -1,7 +1,7 @@
 // Comment Controller
 // ------------------
 //
-// The comment controller handles requests passed from the comment router. 
+// The comment controller handles requests passed from the comment router.
 
 // The Q module is used to bind Mongoose methods to use promises.
 var Q = require('q');
@@ -11,14 +11,13 @@ module.exports = {
 
   // Retrieve all of the comments for a given idea from the MongoDB database.
   allComments: function(req, res, next) {
-    
+
     // Bind the Mongoose find method to the Comment model, so that the Q module can use promises with it.
     var findAllComments = Q.nbind(Comment.find, Comment);
-    
     // Find all comments for a given idea. Send back the array of comments.
-    findAllComments({idea_id: req.body.idea_id})
+    findAllComments({idea_id: req.query.idea_id})
       .then(function(ideas) {
-        res.json(comments);
+        res.json(ideas);
       })
       .fail(function(error) {
         next(error);
@@ -27,7 +26,6 @@ module.exports = {
 
   // Add a new comment to the MongoDB database.
   newComment: function(req, res, next) {
-
     // Bind the Mongoose create method to the Comment model, so that the Q module can use promises with it.
     var createComment = Q.nbind(Comment.create, Comment);
 
