@@ -22,6 +22,7 @@ angular.module('glint.auth', [])
         $location.path('/');
       })
       .catch(function (error){
+        self.error = error;
         console.error('login error', error);
       });
   };
@@ -39,6 +40,7 @@ angular.module('glint.auth', [])
         $location.path('/');
       })
       .catch(function (error){
+        self.error = error;
         console.error('signup error', error);
       });
   };
