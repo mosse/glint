@@ -102,27 +102,19 @@ angular.module('glint.ideas', [])
     var modalInstance = $modal.open({
       templateUrl: 'app/ideas/modal.html',
       controller: 'ModalInstanceCtrl',
-      size: 'lg',
-      resolve: {
-        items: function() {
-          return self.items;
-        }
-      }
+      size: 'lg'
     });
   };
 })
 
-.controller('ModalInstanceCtrl', function($scope, $modalInstance, items) {
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
-  };
-
+.controller('ModalInstanceCtrl', function($scope, $modalInstance) {
   $scope.ok = function() {
-    $modalInstance.close($scope.selected.item);
+    console.log($scope.test);
+    $modalInstance.close();
   };
 
   $scope.cancel = function() {
+    console.log('clicked cancel');
     $modalInstance.dismiss('cancel');
   };
 });
