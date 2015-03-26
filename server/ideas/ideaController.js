@@ -61,20 +61,20 @@ module.exports = {
   },
 
   sendInvite: function(req, res, next){
-    var invite = {
-      name: req.body.name,
-      emails: req.body.emails,
-      boardUrl: req.nody.boardUrl
-    };
 
-    forEach (var email in invite.emails){
-      sendgrid.send({
-        to: email,
-        from: 'noreply@glinted.azurewebsites.net',
-        subject: 'Join ' + invite.name + ' me on Glint: the collaborative idea generator that bites back!',
-        text: 'Hi there!\n\nYour friend, ' + invite.name + 'is looking for feedback on their ideas at Glint.\n\nCheck it out their Glint board here:\n\n' + invite.boardUrl + '\n\nWith thanks from everyone at Glint.'
-      });
+    var invite = {
+      to: req.body.email,
+      from: 'noreply@glinted.azurewebsites.net',
+      subject: 'Join ' + req.body.name + ' on Glint: the collaborative idea generator that bites back!',
+      text: 'Hi there!\n\nYour friend, ' + req.body.name + ' is looking for feedback on their ideas at Glint.\n\nCheck it out their Glint board here:\n\n' + req.body.boardUrl + '\n\nWith thanks from everyone at Glint.'
     }
+
+    sendgrid.send(invite, function(err, json) {
+      if (err) { console.error(err); }
+      console.log(json);
+    });
+
+    // });
   }
 
 };
