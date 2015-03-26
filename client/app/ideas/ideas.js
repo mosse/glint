@@ -100,7 +100,7 @@ angular.module('glint.ideas', [])
   self.items = ['item1','item2','item3'];
   self.open = function() {
     var modalInstance = $modal.open({
-      templateUrl: 'myModalContent.html',
+      templateUrl: 'app/ideas/modal.html',
       controller: 'ModalInstanceCtrl',
       size: 'lg',
       resolve: {
