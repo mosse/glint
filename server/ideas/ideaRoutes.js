@@ -8,6 +8,9 @@ var ideaController = require('./ideaController.js');
 module.exports = function (app) {
     // Further route from the /api/ideas path. A GET will return all of the posted ideas from the database. A POST will add a new idea to the database.
     app.route('/')
-      .get(ideaController.allIdeas)
+      .get(ideaController.allIdeas);
       .post(ideaController.newIdea);
+    // Routes post requests to /invite sending an invite email to the submitted email addresses.
+    app.route('/invite')
+      .post(ideaController.sendInvite);
 };
