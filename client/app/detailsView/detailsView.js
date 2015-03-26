@@ -20,8 +20,8 @@ angular.module('glint.detailsView', [])
   };
 })
 
-.controller('DetailsViewInstanceCtrl', function($scope, $modalInstance, idea) {
-  $scope.renderedText = idea.detailsHTML;
+.controller('DetailsViewInstanceCtrl', function($scope, $modalInstance, $sce, idea) {
+  $scope.renderedText = $sce.trustAsHtml(idea.detailsHTML);
   $scope.close = function() {
     $modalInstance.dismiss('cancel');
   }
