@@ -111,7 +111,7 @@ i.fa-sort-asc:active, i.fa-sort-desc:active {
 }
 
 i.fa-comments {
-  font-size: 50px;
+  font-size: 45px;
 }
 
 i.fa-comments:hover {
@@ -408,4 +408,23 @@ a.glint-logo-icon:link{
   opacity: 1;
   height: 25px;
   transition: height 500ms cubic-bezier(0, 0.83, 0, 0.93);
+}
+
+.popover {
+  padding: 10px !important;
+  background-color: #f7f7f7 !important;
+  width: 200px;
+}
+
+.popover-title {
+  text-align: center;
+}
+
+input.g-form-control {
+  width: 100px !important;
+  margin: 0 auto;
+}
+
+.g-form-button {
+  width: 70px;
 }

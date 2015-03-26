@@ -6,6 +6,7 @@
 // The Q module is used to bind Mongoose methods to use promises.
 var Q = require('q');
 var Comment = require('./commentModel.js');
+var Idea = require('../ideas/ideaModel.js');
 
 module.exports = {
 
@@ -46,6 +47,13 @@ module.exports = {
       .fail(function(error) {
         next(error);
       });
+
+    Idea.findOne({_id: req.body.idea_id}, function(err, data){
+      data.comments+= 1;
+      data.save(function(err){
+        if (err) next(err);
+      });
+    });
   }
 
 };

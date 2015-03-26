@@ -11,7 +11,8 @@ var app = angular.module('glint', [
   'glint.auth',
   'glint.comments',
   'ngAnimate',
-  'ngRoute'
+  'ngRoute',
+  'mgcrea.ngStrap'
   ])
 
 // Routing configuration. Eventually, this is where the controllers for the specific views will be declared, so they don't have to be referred to in our HTML. (Eg. <varname> instead of AuthCtrl.<varname>)
