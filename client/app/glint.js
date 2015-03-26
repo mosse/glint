@@ -20,6 +20,9 @@ var app = angular.module('glint', [
 		.when('/', {
         templateUrl: 'app/ideas/ideas.html'
       })
+    .when('/board/:name', {
+        templateUrl: 'app/ideas/ideas.html'
+    })
     .when('/login', {
         templateUrl: 'app/auth/login.html'
       })

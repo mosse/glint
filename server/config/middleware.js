@@ -6,9 +6,9 @@
 // Allows for parsing of POST request body.
 var bodyParser  = require('body-parser');
 // Error logging and handling helper functions.
-var helpers = require('./helpers.js'); 
+var helpers = require('./helpers.js');
 // Logs requests sent from the client.
-var morgan = require('morgan'); 
+var morgan = require('morgan');
 
 module.exports = function (app, express) {
 
@@ -27,7 +27,7 @@ module.exports = function (app, express) {
   app.use(helpers.handleErrors);
 
   // Use the idea router for all idea requests.
-  app.use('/api/ideas', ideaRouter); 
+  app.use('/api/ideas', ideaRouter);
   // Use vote router for requests related to upvoting or downvoting.
   app.use('/api/vote', voteRouter);
   // Use comment router for requests related to adding and getting comments.
@@ -40,5 +40,4 @@ module.exports = function (app, express) {
   require('../votes/voteRoutes.js')(voteRouter);
   require('../comments/commentRoutes.js')(commentRouter);
   require('../users/usersRoutes.js')(usersRouter);
-
 };

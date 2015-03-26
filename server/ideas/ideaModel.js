@@ -6,6 +6,7 @@
 var mongoose = require('mongoose');
 
 var IdeaSchema = new mongoose.Schema({
+    board: { type: String, default: '' },
     title: String,
     text: { type: String, default: '' },
     votes: { type: Number, default: 0 },

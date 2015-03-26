@@ -2,10 +2,11 @@ var glintServices = angular.module('glint.services', []);
 
 glintServices.factory('Ideas', function ($http){
 
-  var getIdeas = function (){
+  var getIdeas = function (board){
     return $http({
       method: 'GET',
-      url: '/api/ideas'
+      url: '/api/ideas',
+      params: {board: board}
     }).then(function (response){
       return response.data;
     }).catch(function (error) {
