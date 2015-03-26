@@ -1,6 +1,6 @@
 <div class="jumbotron jumbo-top">
-  <h1 class="animated fadeInUp">What's your great idea?</h1>
-  <form class="navbar-form navbar-middle" ng-submit="ictrl.submitIdea()">
+  <h1 class="animated fadeInUp">{{ ictrl.title }}</h1>
+  <form ng-if="ictrl.board" class="navbar-form navbar-middle" ng-submit="ictrl.submitIdea()">
 
     <!-- Enter Idea -->
     <div class="form-idea animated fadeInUp">
@@ -36,7 +36,7 @@
         <div class="idea-wrapper">
           <h3 class="idea-title">{{ idea.title }}</h3>
           <h5 class="idea-description">{{ idea.text | limitTo: 130 }}{{ idea.text.length > 130 ? '...' : ''}}</h5>
-          <p class="timestamp-author">Submitted {{ idea.created_at | moment }} by {{ idea.created_by }}</p>
+          <p class="timestamp-author">Submitted {{ idea.created_at | moment }} by <a href="#/user/{{ idea.created_by }}">{{ idea.created_by }}</a></p>
         </div>
       </div>
       <div class="col-md-1 ">

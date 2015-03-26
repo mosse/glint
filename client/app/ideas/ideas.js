@@ -11,16 +11,27 @@ angular.module('glint.ideas', [])
   self.postSuccess = false;
   self.submitted = false;
   self.Auth = Auth;
+  self.board = true;
+  self.title = "What's your great idea?";
 
   // Refresh the ideas on route change
   $rootScope.$on('$routeChangeSuccess', function(event) {
     var args = $location.path().split('/');
     if (args.length > 2){
       var query = {};
-      if (args[1] === 'user') args[1] = 'created_by';
+      if (args[1] === 'user') {
+        args[1] = 'created_by';
+        self.board = false;
+        self.title = args[2] + "'s ideas";
+      } else {
+        self.board = true;
+        self.title = args[2] + " idea board";
+      }
       query[args[1]] = args[2];
       self.displayIdeas(query);
     } else {
+      self.board = true;
+      self.title = "What's your great idea?";
       self.displayIdeas({board:""});
     }
   });
@@ -32,7 +43,6 @@ angular.module('glint.ideas', [])
 
   // Display all ideas currently in the database.
   self.displayIdeas = function(query){
-    // var board = $location.path().split('/').slice(-1)[0];
     Ideas.getIdeas(query)
       .then(function (results){
         results = $filter('orderBy')(results, 'votes', true);
@@ -73,7 +83,8 @@ angular.module('glint.ideas', [])
         self.submitted = false;
         // Clear form fields after submit.
         self.idea = {};
-        self.displayIdeas();
+        self.data.ideas.push(response);
+        // self.displayIdeas();
       })
       .catch(function (error){
         console.error('createIdea error', error);
