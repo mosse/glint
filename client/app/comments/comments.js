@@ -8,7 +8,7 @@ angular.module('glint.comments', [])
 .controller('CommentsCtrl', function (Comments, Auth){
   var self = this;
   self.comment = {};
-  self.comments = [];
+  self.comments = [''];
   self.viewingComments = false;
 
   // Submit eventual form inputs to the db and display something back to the user on success.
