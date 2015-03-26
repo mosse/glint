@@ -370,7 +370,6 @@ a.glint-logo-icon:link{
 .post-comment-animation.ng-leave-active {
   height: 0;
   padding: 0;
-<<<<<<< HEAD
   opacity: 0;
 }
 
@@ -409,8 +408,21 @@ a.glint-logo-icon:link{
   opacity: 1;
   height: 25px;
   transition: height 500ms cubic-bezier(0, 0.83, 0, 0.93);
+  opacity: 0;
 }
 
+/*
+ ***********************
+ * Modal Stylings
+ ***********************
+ */
+
+.modal-body textarea {
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
+  resize: none;
+}
 .popover {
   padding: 10px !important;
   background-color: #f7f7f7 !important;
