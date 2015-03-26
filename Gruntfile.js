@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     concat: {
       options: {
         separator: ';'
-      }, 
+      },
       dist: {
         src: [
         'client/app/glint.js',
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc'
       }
     },
-    
+
     karma: {
       unit: {
         configFile: 'client/karma.conf.js'
@@ -137,7 +137,7 @@ module.exports = function(grunt) {
     nodemon.stdout.pipe(process.stdout);
     nodemon.stderr.pipe(process.stderr);
 
-    grunt.task.run(['watch']);
+    // grunt.task.run(['watch']);
   });
 
   grunt.registerTask('test', [
