@@ -51,7 +51,7 @@
     </div>
   </div>
   <div ng-class="{'well':cctrl.viewingComments}">
-    <h3 ng-if="cctrl.viewingComments" class="comment-header">Comments:</h3>
+    <h3 ng-class="{'open':cctrl.viewingComments}" class="animate-h3 comment-header">Comments:</h3>
     <h5 ng-if="cctrl.viewingComments && !cctrl.comments.length" class="comment-header">(There are no comments yet!)</h5>
     <div class="animate-div" ng-class="{'open':cctrl.viewingComments && cctrl.comments.length}">
       <div class="row" ng-repeat="comment in cctrl.comments">

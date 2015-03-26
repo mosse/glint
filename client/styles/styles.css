@@ -394,3 +394,18 @@ a.glint-logo-icon:link{
   height: 200px;
   transition: height 500ms cubic-bezier(0, 0.83, 0, 0.93);
 }
+
+.animate-h3 {
+  position: relative;
+  max-height: 25px;
+  height: 0px;
+  width: 100%;
+  transition: height 500ms cubic-bezier(0, 0.83, 0, 0.93);
+  opacity: 0;
+}
+
+.animate-h3.open {
+  opacity: 1;
+  height: 25px;
+  transition: height 500ms cubic-bezier(0, 0.83, 0, 0.93);
+}
