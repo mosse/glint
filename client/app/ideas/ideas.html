@@ -36,7 +36,8 @@
         <div class="idea-wrapper">
           <h3 class="idea-title">{{ idea.title }}</h3>
           <h5 class="idea-description">{{ idea.text | limitTo: 130 }}{{ idea.text.length > 130 ? '...' : ''}}</h5>
-          <p class="timestamp-author">Submitted {{ idea.created_at | moment }} by <a href="#/user/{{ idea.created_by }}">{{ idea.created_by }}</a></p>
+          <p ng-if="ictrl.board" class="timestamp-author">Submitted {{ idea.created_at | moment }} by <a href="#/user/{{ idea.created_by }}">{{ idea.created_by }}</a></p>
+          <p ng-if="!ictrl.board" class="timestamp-author">Submitted {{ idea.created_at | moment }} on the <a href="#/board/{{ idea.board }}">{{ idea.board }} idea board</a></p>
         </div>
       </div>
       <div class="col-md-1 ">

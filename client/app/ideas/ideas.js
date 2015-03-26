@@ -32,7 +32,7 @@ angular.module('glint.ideas', [])
     } else {
       self.board = true;
       self.title = "What's your great idea?";
-      self.displayIdeas({board:""});
+      self.displayIdeas({board:'global'});
     }
   });
 
@@ -71,7 +71,7 @@ angular.module('glint.ideas', [])
     self.idea.text = _.escape(self.idea.text);
     self.idea.created_by = self.Auth.user.username;
     self.idea.board = $location.path().split('/').slice(-1)[0];
-    // console.log(Auth.getUser());
+    if (!self.idea.board) self.idea.board = 'global';
     var idea = JSON.stringify(self.idea);
 
     // POST new idea, display confirmation, redisplay all ideas.
