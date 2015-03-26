@@ -93,28 +93,4 @@ angular.module('glint.ideas', [])
   };
 
   self.displayIdeas();
-})
-// The ModalCtrl is part of the angular-ui directive to display a modal
-.controller('ModalCtrl', function($modal) {
-  var self = this;
-  self.items = ['item1','item2','item3'];
-  self.open = function() {
-    var modalInstance = $modal.open({
-      templateUrl: 'app/ideas/modal.html',
-      controller: 'ModalInstanceCtrl',
-      size: 'lg'
-    });
-  };
-})
-
-.controller('ModalInstanceCtrl', function($scope, $modalInstance) {
-  $scope.ok = function() {
-    console.log($scope.test);
-    $modalInstance.close();
-  };
-
-  $scope.cancel = function() {
-    console.log('clicked cancel');
-    $modalInstance.dismiss('cancel');
-  };
 });
