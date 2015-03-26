@@ -49,20 +49,21 @@
     <div class="col-md-1">
     </div>
   </div>
-  <div class="no-comment-container ng-cloak post-idea-animation" ng-if="cctrl.viewingComments && !cctrl.comments.length">
-    <span class="post-idea-success">There are no comments for this idea.</span>
-  </div>
-  <div class="post-comment ng-cloak" ng-if="cctrl.viewingComments">
-    <form ng-submit="cctrl.submitComment(idea._id)">
-      <input class="comment-form-control form-control" ng-model="cctrl.comment.text" rows="3" required></input>
-      <button type="submit" class="btn btn-default comment-submit-button">Submit</button>
-    </form>
-  </div>
-  <div ng-if="cctrl.viewingComments" ng-repeat="comment in cctrl.comments">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <span style="font-weight: bold">{{ comment.created_by }}: </span><span>{{ comment.text }}</span>
+  <div ng-class="{'well':cctrl.viewingComments}">
+    <h3 ng-if="cctrl.viewingComments" class="comment-header">Comments:</h3>
+    <h5 ng-if="cctrl.viewingComments && !cctrl.comments.length" class="comment-header">(There are no comments yet!)</h5>
+    <div class="animate-div" ng-class="{'open':cctrl.viewingComments && cctrl.comments.length}">
+      <div class="row" ng-repeat="comment in cctrl.comments">
+        <div class="col-md-8 col-md-offset-2">
+          <span style="font-weight: bold">{{ comment.created_by }}: </span><span>{{ comment.text }}</span>
+        </div>
       </div>
+    </div>
+    <div class="post-comment ng-cloak" ng-if="cctrl.viewingComments">
+      <form ng-submit="cctrl.submitComment(idea._id)">
+        <input class="comment-form-control form-control" ng-model="cctrl.comment.text" rows="3" required></input>
+        <button type="submit" class="btn btn-default comment-submit-button">Submit</button>
+      </form>
     </div>
   </div>
 </div>
