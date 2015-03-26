@@ -14,7 +14,15 @@ angular.module('glint.ideas', [])
 
   // Refresh the ideas on route change
   $rootScope.$on('$routeChangeSuccess', function(event) {
-    self.displayIdeas();
+    var args = $location.path().split('/');
+    if (args.length > 2){
+      var query = {};
+      if (args[1] === 'user') args[1] = 'created_by';
+      query[args[1]] = args[2];
+      self.displayIdeas(query);
+    } else {
+      self.displayIdeas({board:""});
+    }
   });
 
   self.logout = function(){
@@ -23,9 +31,9 @@ angular.module('glint.ideas', [])
   };
 
   // Display all ideas currently in the database.
-  self.displayIdeas = function(){
-    var board = $location.path().split('/').slice(-1)[0];
-    Ideas.getIdeas(board)
+  self.displayIdeas = function(query){
+    // var board = $location.path().split('/').slice(-1)[0];
+    Ideas.getIdeas(query)
       .then(function (results){
         results = $filter('orderBy')(results, 'votes', true);
         self.data.ideas = results;
