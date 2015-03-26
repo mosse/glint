@@ -34,7 +34,8 @@ module.exports = {
       title: req.body.title,
       text: req.body.text,
       created_by: req.body.created_by,
-      board: req.body.board
+      board: req.body.board,
+      detailsMD: req.body.details
     };
 
     createIdea(newIdea)
