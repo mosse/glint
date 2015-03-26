@@ -20,7 +20,7 @@ angular.module('glint.details', [])
 
 .controller('DetailsInstanceCtrl', function($scope, $modalInstance) {
   $scope.ok = function() {
-    console.log($scope.test);
+    console.log($scope.markdownText);
     $modalInstance.close();
   };
 
