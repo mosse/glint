@@ -31,7 +31,7 @@ module.exports = {
     var createIdea = Q.nbind(Idea.create, Idea);
 
     // Convert Markdown string into HTML to store in DB
-    var detailsMD = req.body.details;
+    var detailsMD = req.body.details || '*No details provided*';
     var detailsHTML = markdown.toHTML(detailsMD);
 
     // Create a new document from the Idea model. If successfully created then the new Idea document is returned.
