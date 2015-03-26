@@ -2,10 +2,23 @@
 // ---------------
 //
 // The idea controller handles requests passed from the idea router.
+var sendgrid_username = process.env.SENDGRID_USERNAME;
+var sendgrid_password = process.env.SENDGRID_PASSWORD;
+
 
 // The Q module is used to bind Mongoose methods to use promises.
 var Q = require('q');
 var Idea = require('./ideaModel.js');
+var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
+
+console.log('sending?');
+sendgrid.send({
+    to: 'mjemacdonald@gmail.com',
+    from: 'mjem100@gmail.com',
+    subject: 'test mail',
+    text: 'This is a sample email message.'
+});
+
 
 module.exports = {
 
