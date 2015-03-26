@@ -2,8 +2,8 @@
 // ---------------
 //
 // The idea controller handles requests passed from the idea router.
-var sendgrid_username = process.env.SENDGRID_USERNAME;
-var sendgrid_password = process.env.SENDGRID_PASSWORD;
+var sendgrid_username = 'mjemacdonald' || process.env.SENDGRID_USERNAME;
+var sendgrid_password = '' || process.env.SENDGRID_PASSWORD;
 
 
 // The Q module is used to bind Mongoose methods to use promises.
@@ -11,13 +11,7 @@ var Q = require('q');
 var Idea = require('./ideaModel.js');
 var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
 
-console.log('sending?');
-sendgrid.send({
-    to: 'mjemacdonald@gmail.com',
-    from: 'mjem100@gmail.com',
-    subject: 'test mail',
-    text: 'This is a sample email message.'
-});
+
 
 
 module.exports = {
@@ -59,6 +53,15 @@ module.exports = {
       .fail(function(error) {
         next(error);
       });
+  },
+
+  sendInvite: function(req, res, next){
+    sendgrid.send({
+      to: 'mjemacdonald@gmail.com',
+      from: 'noreply@glinted.azurewebsites.net',
+      subject: 'Join me on Glint: the collaborative idea generator that bites back!',
+      text: 'Hi there!\n\nYour friend is looking for feedback on their ideas at Glint.\n\nCheck it out here:\n\nhttp://glinted.azurewebsites.net\n\nWith thanks from everyone at Glint.'
+    });
   }
 
 };
