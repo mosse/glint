@@ -139,7 +139,7 @@ glintServices.factory('Comments', function ($http){
     return $http({
       method: 'GET',
       url: '/api/comments',
-      data: idea_id
+      params: {'idea_id':idea_id}
     }).then(function (response){
       return response.data;
     }).catch(function (error) {
