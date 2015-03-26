@@ -16,9 +16,8 @@ var IdeaSchema = new mongoose.Schema({
     category: { type: String, default: '' },
     tags: [String],
     roles: [String],
-    comments: [String],
-    delete_flag: { type: Boolean, default: false },
-    viewingComments: { type: Boolean, default: false }
+    comments: { type: Number, default: 0 },
+    delete_flag: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('Idea', IdeaSchema);

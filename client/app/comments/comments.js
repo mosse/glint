@@ -12,11 +12,12 @@ angular.module('glint.comments', [])
   self.viewingComments = false;
 
   // Submit eventual form inputs to the db and display something back to the user on success.
-  self.submitComment = function (idea_id){
+  self.submitComment = function (idea_id, idea){
     // The comment object needs to be populated with form inputs here.
     // User input will need to be escaped, and stringified. Refer to the comment schema for the fields needed, but likely `self.comment.text`, `self.comment.idea_id`, and `self.comment.created_by` will be necessary.
     self.comment.idea_id = idea_id;
     self.comment.created_by = Auth.user.username;
+    idea.comments++;
     comment = JSON.stringify(self.comment);
     self.comment = {};
     Comments.createComment(comment)

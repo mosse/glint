@@ -43,7 +43,7 @@
       <div class="col-md-1 ">
         <div class="comments-wrapper">
           <i class="fa fa-comments" ng-click="cctrl.displayComments(idea._id)"></i>
-          <!-- <p class="comments-amount">{{ cctrl.comments.length }}</p> -->
+          <p class="comments-amount">{{ idea.comments }}</p>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@
       </div>
     </div>
     <div class="post-comment ng-cloak" ng-if="cctrl.viewingComments">
-      <form ng-submit="cctrl.submitComment(idea._id)">
+      <form ng-submit="cctrl.submitComment(idea._id, idea)">
         <input class="comment-form-control form-control" ng-model="cctrl.comment.text" rows="3" required></input>
         <button type="submit" class="btn btn-default comment-submit-button">Submit</button>
       </form>
