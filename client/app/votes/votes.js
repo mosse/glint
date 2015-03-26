@@ -5,9 +5,11 @@ angular.module('glint.votes', [])
 
 .controller('VotesCtrl', function($window, Votes, Auth, $location){
   var self = this;
+  self.gCount = 1;
 
   // Display the user's upvotes and pass them along to the db.
-  self.upvote = function(idea, gCount){
+  self.upvote = function(idea){
+    var gCount = +self.gCount;
     if (!Auth.user){
       $location.path('/login');
       return;

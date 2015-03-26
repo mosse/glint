@@ -26,10 +26,9 @@
   <div class="row idea-post ng-cloak idea-post-repeat">
     <div class="col-md-1">
     </div>
-
     <div class="idea-container">
       <div class="col-md-1 upvote-downvote-wrapper" ng-controller="VotesCtrl as vctrl">
-        <i class="fa fa-sort-asc" ng-click="vctrl.upvote(idea, 5)"></i> <!-- upvote -->
+        <i class="fa fa-sort-asc" placement="top" data-template="common/popover.tpl.html" data-auto-close="1" bs-popover></i>
         <div class="vote-points">{{ idea.votes }}</div>
       </div>
       <div class="col-md-8">
