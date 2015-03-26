@@ -5,12 +5,13 @@
 
 // Our dependencies are by shared services, feature controllers, and third-party modules.
 var app = angular.module('glint', [
+  'ui.bootstrap',
+  'ngAnimate',
   'glint.services',
   'glint.ideas',
   'glint.votes',
   'glint.auth',
   'glint.comments',
-  'ngAnimate',
   'ngRoute',
   'mgcrea.ngStrap'
   ])
