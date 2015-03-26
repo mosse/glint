@@ -13,8 +13,6 @@ var markdown = require('markdown').markdown;
 var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
 
 
-
-
 module.exports = {
 
   // Retrieve all of the ideas that exist in the MongoDB database.
@@ -63,12 +61,20 @@ module.exports = {
   },
 
   sendInvite: function(req, res, next){
-    sendgrid.send({
-      to: 'mjemacdonald@gmail.com',
-      from: 'noreply@glinted.azurewebsites.net',
-      subject: 'Join me on Glint: the collaborative idea generator that bites back!',
-      text: 'Hi there!\n\nYour friend is looking for feedback on their ideas at Glint.\n\nCheck it out here:\n\nhttp://glinted.azurewebsites.net\n\nWith thanks from everyone at Glint.'
-    });
+    var invite = {
+      name: req.body.name,
+      emails: req.body.emails,
+      boardUrl: req.nody.boardUrl
+    };
+
+    forEach (var email in invite.emails){
+      sendgrid.send({
+        to: email,
+        from: 'noreply@glinted.azurewebsites.net',
+        subject: 'Join ' + invite.name + ' me on Glint: the collaborative idea generator that bites back!',
+        text: 'Hi there!\n\nYour friend, ' + invite.name + 'is looking for feedback on their ideas at Glint.\n\nCheck it out their Glint board here:\n\n' + invite.boardUrl + '\n\nWith thanks from everyone at Glint.'
+      });
+    }
   }
 
 };
