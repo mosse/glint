@@ -4,9 +4,25 @@
 
 angular.module('glint.detailsView', [])
 
-.controller('DetailsViewCtrl', function() {
+.controller('DetailsViewCtrl', function($modal) {
   var self = this;
   self.open = function(idea) {
-    console.log('the idea was clicked!', idea);
+    var modalInstance = $modal.open({
+      templateUrl: 'app/detailsView/detailsView.html',
+      controller: 'DetailsViewInstanceCtrl',
+      size: 'lg',
+      resolve: {
+        idea: function(){
+          return idea;
+        }
+      }
+    });
   };
+})
+
+.controller('DetailsViewInstanceCtrl', function($scope, $modalInstance, idea) {
+  $scope.renderedText = idea.detailsHTML;
+  $scope.close = function() {
+    $modalInstance.dismiss('cancel');
+  }
 });
