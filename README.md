@@ -8,10 +8,9 @@
 
 ## Team
 
-  - __Product Owner__: David Rabkin
-  - __Scrum Master__: Anneke Floor
-  - __Project Manager__: Kalev Roomann-Kurrik
-  - __Development Team Members__: Michael Hari
+  - __Product Owner__: Garrett Cox
+  - __Scrum Master__: Mark Macdonald
+  - __Project Manager__: Chris Rinaldi
 
 ## Table of Contents
 
