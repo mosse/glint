@@ -429,6 +429,10 @@ a.glint-logo-icon:link{
   width: 200px;
 }
 
+.modal-body h2:first-child {
+  margin-top: 0px;
+}
+
 .popover-title {
   text-align: center;
 }
