@@ -171,3 +171,20 @@ glintServices.factory('Markdown', function ($http){
   };
 });
 
+glintServices.factory('Invites', function($http){
+
+  var sendInvite = function (invite){
+    return $http({
+      method: 'POST',
+      url: 'api/ideas/invite',
+      data: invite
+    })
+    .then(function (response){
+      return response.data;
+    })
+    .catch(function (error){
+      console.error('invite error', error);
+    });
+  }
+});
+
