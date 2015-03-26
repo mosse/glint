@@ -186,5 +186,9 @@ glintServices.factory('Invites', function($http){
       console.error('invite error', error);
     });
   }
+
+  return {
+    sendInvite: sendInvite
+  };
 });
 
