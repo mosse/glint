@@ -8,23 +8,28 @@ angular.module('glint.invite', [])
 // The ModalCtrl is part of the angular-ui directive to display a modal
 .controller('InviteCtrl', function($modal) {
   var self = this;
-  self.open = function(invite) {
+  self.open = function() {
     var modalInstance = $modal.open({
       templateUrl: 'app/invite/invite.html',
       controller: 'InviteInstanceCtrl',
       size: 'sm',
-      resolve: {  // allows us to access idea object in DetailsInstanceCtrl
-        invite: function () {
-          return invite;
-        }
-      }
+      // resolve: {  // allows us to access idea object in DetailsInstanceCtrl
+      //   invite: function () {
+      //     return invite;
+      //   }
+      // }
     });
   };
 })
 
-.controller('InviteInstanceCtrl', function($scope, $modalInstance, invite) {
+.controller('InviteInstanceCtrl', function($scope, $modalInstance, Invites) {
   $scope.submitDetails = function() {
-    invite.details = $scope.markdownText;
+    var invite = {};
+    // Pull data from form
+    // Pull board from $window (in service ?)
+    // initiate post request for invite
+    Invites.sendInvite(invite);
+    idea.details = $scope.markdownText;
     $modalInstance.close();
   };
 

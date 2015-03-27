@@ -503,6 +503,10 @@ a.glint-logo-icon:link{
   color: #eee;
 }
 
+.invite-input {
+  width: 100%;
+}
+
 /*
  ***********************
  * Pop up G Form
