@@ -1,15 +1,15 @@
-<div class="modal-header">
+<div class="details modal-header">
   <h1 class="modal-title">{{ title }}</h1>
   <p>{{ text }}</p>
 </div>
-<div class="modal-body">
-  <div ng-bind-html="renderedText"></div>
+<div class="details modal-body">
+  <div class="renderedText" ng-bind-html="renderedText"></div>
 </div>
-<div class="modal-footer">
+<div class="details modal-footer">
   <p class="summary-info">
     created by {{ created_by }}
     on {{ board }}
-    {{ created_at | moment }}   
+    {{ created_at | moment }}
   </p>
   <button class="btn" ng-click="close()">Close</button>
 </div>

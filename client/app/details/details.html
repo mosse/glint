@@ -1,11 +1,16 @@
-<div class="modal-header">
+<div class="details modal-header">
   <h3 class="modal-title">Enter Additional Details</h3>
   <p>You can enter additional details using <a target="_blank" href="https://guides.github.com/features/mastering-markdown/">Markdown</a>! </p>
 </div>
-<div class="modal-body">
-  <textarea ng-model="markdownText"></textarea>
+<div class="details modal-body">
+  <textarea ng-show="!previewing" ng-model="markdownText"></textarea>
+  <div class="renderedText" ng-show="previewing" ng-bind-html="renderedText"></div>
 </div>
-<div class="modal-footer">
+<div class="details modal-footer">
+  <p class="preview-markdown">
+    <a ng-if="!previewing" ng-click="previewMarkdown(markdownText)">Preview Markdown</a>
+    <a ng-if="previewing" ng-click="editMarkdown()">Edit Markdown</a>
+  </p>
   <button class="btn btn-primary" ng-click="submitDetails()">OK</button>
   <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 </div>

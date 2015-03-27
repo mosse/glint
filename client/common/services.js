@@ -153,3 +153,21 @@ glintServices.factory('Comments', function ($http){
   };
 });
 
+glintServices.factory('Markdown', function ($http){
+  var render = function (markdown) {
+    return $http({
+      method: 'POST',
+      url: '/api/markdown',
+      data: {markdown: markdown},
+    }).then(function (response){
+      return response.data;
+    }).catch(function (error) {
+      console.error('renderMarkdown error', error);
+    });
+  };
+
+  return {
+    render: render
+  };
+});
+
