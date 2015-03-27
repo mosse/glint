@@ -416,29 +416,30 @@ a.glint-logo-icon:link{
  ***********************
  */
 
-.modal-content {
+.details.modal-content {
   height: 660px;
 }
 
-.modal-header {
+.details.modal-header {
   box-sizing: content-box;
   height: 70px;
   padding: 10px;
   padding-bottom: 0;
   background-color: rgb(228, 228, 228);
+  border-radius: 5px;
 }
 
-.modal-header p {
+.details.modal-header p {
   padding-left: 5px;
 }
 
-.modal-body {
+.details.modal-body {
   box-sizing: content-box;
   height: 513px;
   padding: 0;
 }
 
-.modal-body textarea {
+.details.modal-body textarea {
   width: 100%;
   height: 513px;
   margin: 0px auto;
@@ -446,13 +447,14 @@ a.glint-logo-icon:link{
   resize: none;
   font-size: 1.5em;
 }
+
 .popover {
   padding: 10px !important;
   background-color: #f7f7f7 !important;
   width: 200px;
 }
 
-.modal-body h2:first-child {
+.details.modal-body h2:first-child {
   margin-top: -50px;
 }
 
@@ -460,7 +462,7 @@ a.glint-logo-icon:link{
   width: 100%;
 }
 
-.renderedText {
+.details .renderedText {
   overflow: auto;
   height: 513px;
   font-size: 1.5em;
@@ -468,14 +470,14 @@ a.glint-logo-icon:link{
   padding-top: 0;
 }
 
-p.summary-info {
+.details p.summary-info {
   float: left;
   padding-top: 10px;
   padding-left: 5px;
   font-style: italic;
 }
 
-.modal-footer {
+.details.modal-footer {
   height: 70px;
   padding: 10px;
   padding-top: 15px;
@@ -483,13 +485,13 @@ p.summary-info {
   background-color: rgb(228, 228, 228);
 }
 
-.modal-footer .preview-markdown {
+.details.modal-footer .preview-markdown {
   float: left;
   padding-top: 10px;
   padding-left: 15px;
 }
 
-.modal-footer button {
+.details.modal-footer button {
   background-color: #046380;
   color: white;
   height: 40px;
@@ -497,7 +499,7 @@ p.summary-info {
   margin-right: 5px;
 }
 
-.modal-footer button:hover {
+.details.modal-footer button:hover {
   color: #eee;
 }
 
