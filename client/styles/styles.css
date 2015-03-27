@@ -422,7 +422,7 @@ a.glint-logo-icon:link{
 }
 
 .modal-header p {
-  padding-left: 15px;
+  padding-left: 5px;
 }
 
 .modal-body textarea {
@@ -454,6 +454,12 @@ p.summary-info {
 
 .modal-footer {
   padding: 10px;
+}
+
+.modal-footer .preview-markdown {
+  float: left;
+  padding-top: 10px;
+  padding-left: 15px;
 }
 
 .modal-footer button {
