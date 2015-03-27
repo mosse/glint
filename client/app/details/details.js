@@ -22,7 +22,7 @@ angular.module('glint.details', [])
   };
 })
 
-.controller('DetailsInstanceCtrl', function($scope, $modalInstance, idea) {
+.controller('DetailsInstanceCtrl', function($scope, $modalInstance, Markdown, idea) {
   $scope.submitDetails = function() {
     idea.details = $scope.markdownText;
     $modalInstance.close();
@@ -31,5 +31,9 @@ angular.module('glint.details', [])
   $scope.cancel = function() {
     console.log('clicked cancel');
     $modalInstance.dismiss('cancel');
+  };
+
+  $scope.previewMarkdown = function(text) {
+    Markdown.render(text);
   };
 });
