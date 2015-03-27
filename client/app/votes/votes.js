@@ -3,7 +3,7 @@
 
 angular.module('glint.votes', [])
 
-.controller('VotesCtrl', function($window, Votes, Auth, $location){
+.controller('VotesCtrl', function($window, Votes, Auth, $location, $modal){
   var self = this;
   self.gCount = 1;
   self.message = "How many G's?";
@@ -23,6 +23,7 @@ angular.module('glint.votes', [])
     idea = {idea: idea, gCount: gCount, username: Auth.user.username};
     idea = JSON.stringify(idea);
     ideaRef.votes+= gCount;
+    if (ideaRef.votes === 100) self.open();
     Auth.user.wallet-= gCount;
     Auth.update();
     Votes.upvote(idea)
@@ -33,6 +34,18 @@ angular.module('glint.votes', [])
         console.error('upvote error', error);
       });
   };
+
+  self.open = function() {
+    document.getElementById('snoop').play();
+    var modalInstance = $modal.open({
+      templateUrl: 'common/itsEaster.html',
+      size: 'lg'
+    });
+    modalInstance.result.then(function(){}, function(){
+      document.getElementById('snoop').pause();
+    });
+  };
+
 
   // Display the user's downvotes and pass them along to the db.
   self.downvote = function(idea){
