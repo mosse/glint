@@ -21,8 +21,17 @@ angular.module('glint.detailsView', [])
 })
 
 .controller('DetailsViewInstanceCtrl', function($scope, $modalInstance, $sce, idea) {
+  // header info
   $scope.title = idea.title;
+  $scope.text = idea.text;
+
+  // rendered markup
   $scope.renderedText = $sce.trustAsHtml(idea.detailsHTML);
+
+  // footer stuff
+  $scope.created_by = idea.created_by;
+  $scope.board = idea.board;
+  $scope.created_at = idea.created_at;
   $scope.close = function() {
     $modalInstance.dismiss('cancel');
   }
