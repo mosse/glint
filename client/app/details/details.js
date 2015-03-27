@@ -42,4 +42,8 @@ angular.module('glint.details', [])
       $scope.renderedText = $sce.trustAsHtml(data);
     });
   };
+
+  $scope.editMarkdown = function() {
+    $scope.previewing = false;
+  };
 });
