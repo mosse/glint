@@ -22,7 +22,7 @@ angular.module('glint.details', [])
   };
 })
 
-.controller('DetailsInstanceCtrl', function($scope, $modalInstance, Markdown, idea) {
+.controller('DetailsInstanceCtrl', function($scope, $modalInstance, $sce, Markdown, idea) {
   // user doesn't start with previewing rendered markdown
   $scope.previewing = false;
 
@@ -39,7 +39,7 @@ angular.module('glint.details', [])
     // must use .then() due to asynchronous call
     Markdown.render(text).then(function(data){
       $scope.previewing = true;
-      $scope.rendered = data;
+      $scope.renderedText = $sce.trustAsHtml(data);
     });
   };
 });
