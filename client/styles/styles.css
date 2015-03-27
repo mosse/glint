@@ -507,6 +507,15 @@ a.glint-logo-icon:link{
   width: 100%;
 }
 
+.invite-align {
+  display: inline;
+  margin-top: 2px;
+}
+
+.invite-submit-button {
+  margin-top: 5px;
+}
+
 /*
  ***********************
  * Pop up G Form
