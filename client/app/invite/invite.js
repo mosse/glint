@@ -13,23 +13,24 @@ angular.module('glint.invite', [])
       templateUrl: 'app/invite/invite.html',
       controller: 'InviteInstanceCtrl',
       size: 'sm',
-      // resolve: {  // allows us to access idea object in DetailsInstanceCtrl
-      //   invite: function () {
-      //     return invite;
-      //   }
-      // }
     });
   };
 })
 
-.controller('InviteInstanceCtrl', function($scope, $modalInstance, Invites) {
+.controller('InviteInstanceCtrl', function($scope, $window, $modalInstance, Invites) {
   $scope.submitDetails = function() {
-    var invite = {};
-    // Pull data from form
-    // Pull board from $window (in service ?)
-    // initiate post request for invite
+    var name = $scope.name;
+    var email = $scope.inviteEmails;
+    var url = $window.location.href;
+    var invite = {
+      name: name,
+      email: email, 
+      boardUrl: url
+    };
+    console.log("Invite sent!");
+
     Invites.sendInvite(invite);
-    idea.details = $scope.markdownText;
+
     $modalInstance.close();
   };
 

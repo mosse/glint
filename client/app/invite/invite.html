@@ -1,9 +1,12 @@
 <div class="modal-header">
   <h3 class="modal-title">Invite collaborators</h3>
-  <p>Enter an email address and we'll invite that person to join Glint."</p>
+  <p>Enter an email address and we'll invite that person to join Glint.</p>
 </div>
 <div class="modal-body">
-  <input class="invite-input"></input>
+<p>Your name:</p>
+  <input ng-model="name" class="invite-input"></input>
+<p> Enter email address here:</p>
+  <input ng-model="inviteEmails" class="invite-input"></input>
 </div>
 <div class="modal-footer">
   <button class="btn btn-primary" ng-click="submitDetails()">OK</button>
