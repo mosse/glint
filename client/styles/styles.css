@@ -265,13 +265,13 @@ a.glint-logo-icon:link{
 }
 
 .form-description.ng-enter-active {
-  height: 73px;
+  height: 93px;
   opacity: 1;
 }
 
 .form-description.ng-leave {
   transition: 0.75s;
-  height: 73px;
+  height: 93px;
   opacity: 1;
 }
 
