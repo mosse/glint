@@ -17,6 +17,7 @@ module.exports = function (app, express) {
   var voteRouter = express.Router();
   var commentRouter = express.Router();
   var usersRouter = express.Router();
+  var markdownRouter = express.Router();
 
   // Associate the Express server app with the different modules that it should use.
   app.use(bodyParser.urlencoded({extended: true}));
@@ -34,10 +35,13 @@ module.exports = function (app, express) {
   app.use('/api/comments', commentRouter);
   // Use users router for requests related to adding and getting user data.
   app.use('/api/users', usersRouter);
+  // Use markdown router for requests related to previewing markdown
+  app.use('/api/markdown', markdownRouter);
 
   // Inject our Express routers into their respective route files.
   require('../ideas/ideaRoutes.js')(ideaRouter);
   require('../votes/voteRoutes.js')(voteRouter);
   require('../comments/commentRoutes.js')(commentRouter);
   require('../users/usersRoutes.js')(usersRouter);
+  require('../markdown/markdownRoutes.js')(markdownRouter);
 };
