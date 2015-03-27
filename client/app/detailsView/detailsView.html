@@ -6,10 +6,10 @@
   <div ng-bind-html="renderedText"></div>
 </div>
 <div class="modal-footer">
-  <ul class="summary-info">
-    <li>created by {{ created_by }}</li>
-    <li>on {{ board }}</li>
-    <li>at {{ created_at | date:'shortDate' }}</li>   
-  </ul>
-  <button class="btn btn-warning" ng-click="close()">Close</button>
+  <p class="summary-info">
+    created by {{ created_by }}
+    on {{ board }}
+    {{ created_at | moment }}   
+  </p>
+  <button class="btn" ng-click="close()">Close</button>
 </div>
