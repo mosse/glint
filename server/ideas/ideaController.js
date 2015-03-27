@@ -2,8 +2,8 @@
 // ---------------
 //
 // The idea controller handles requests passed from the idea router.
-var sendgrid_username = 'mjemacdonald' || process.env.SENDGRID_USERNAME;
-var sendgrid_password = 'pDjx98qJrifWFM' || process.env.SENDGRID_PASSWORD;
+var sendgrid_username = process.env.SENDGRID_USERNAME;
+var sendgrid_password = process.env.SENDGRID_PASSWORD;
 
 
 // The Q module is used to bind Mongoose methods to use promises.
