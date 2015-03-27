@@ -1,7 +1,7 @@
 <div class="popover">
   <div class="arrow"></div>
-  <h3 class="popover-title">How many G's?</h3>
-  <div class="form-group">
+  <h3 class="popover-title">{{ vctrl.message }}</h3>
+  <div class="form-group" ng-class="{'has-error':vctrl.hasError}">
     <div class="input-group">
       <input class="g-form-control form-control" ng-model="vctrl.gCount" required></input>
       <button class="btn btn-default g-form-button" ng-click="vctrl.upvote(idea)">Submit</button>
