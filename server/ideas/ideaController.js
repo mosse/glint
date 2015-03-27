@@ -44,8 +44,6 @@ module.exports = {
       detailsHTML: detailsHTML
     };
 
-    console.log(newIdea);
-
     createIdea(newIdea)
       .then(function (createdIdea) {
         if (createdIdea) {
