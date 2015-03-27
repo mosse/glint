@@ -10,6 +10,11 @@
     <!-- Enter Description -->
     <div ng-if="ictrl.submitted" class="form-description ng-cloak">
       <textarea name="description-input" rows="3" class="form-control form-description-control" placeholder="Enter description here" ng-model="ictrl.idea.text"></textarea>
+
+      <!-- Details Modal -->
+      <div ng-controller="DetailsCtrl as dctrl">
+        <a id="markup-link" href="#/" ng-click="dctrl.open(ictrl.idea)">Enter additional details</a>
+      </div>
     </div>
 
     <button type="submit" class="btn btn-default idea-submit-button animated fadeInUp">Submit</button>
@@ -22,48 +27,50 @@
 </div>
 
 <!-- Idea Row -->
-<div ng-repeat="idea in ictrl.data.ideas track by idea._id" ng-controller="CommentsCtrl as cctrl">
-  <div class="row idea-post ng-cloak idea-post-repeat">
-    <div class="col-md-1">
-    </div>
-    <div class="idea-container">
-      <div class="col-md-1 upvote-downvote-wrapper" ng-controller="VotesCtrl as vctrl">
-        <i class="fa fa-sort-asc" placement="top" data-template="common/popover.tpl.html" data-auto-close="1" bs-popover></i>
-        <div class="vote-points">{{ idea.votes }}</div>
+<div ng-controller="DetailsViewCtrl as dvctrl">
+  <div ng-repeat="idea in ictrl.data.ideas track by idea._id" ng-controller="CommentsCtrl as cctrl">
+    <div class="row idea-post ng-cloak idea-post-repeat">
+      <div class="col-md-1">
       </div>
-      <div class="col-md-8">
-        <div class="idea-wrapper">
-          <h3 class="idea-title">{{ idea.title }}</h3>
-          <h5 class="idea-description">{{ idea.text | limitTo: 130 }}{{ idea.text.length > 130 ? '...' : ''}}</h5>
-          <p ng-if="ictrl.board" class="timestamp-author">Submitted {{ idea.created_at | moment }} by <a href="#/user/{{ idea.created_by }}">{{ idea.created_by }}</a></p>
-          <p ng-if="!ictrl.board" class="timestamp-author">Submitted {{ idea.created_at | moment }} on the <a href="#/board/{{ idea.board }}">{{ idea.board }} idea board</a></p>
+      <div class="idea-container">
+        <div class="col-md-1 upvote-downvote-wrapper" ng-controller="VotesCtrl as vctrl">
+          <i class="fa fa-sort-asc" placement="top" data-template="common/popover.tpl.html" data-auto-close="1" bs-popover></i>
+          <div class="vote-points">{{ idea.votes }}</div>
+        </div>
+        <div class="col-md-8">
+          <div class="idea-wrapper">
+            <h3 class="idea-title" ng-click="dvctrl.open(idea)">{{ idea.title }}</h3>
+            <h5 class="idea-description">{{ idea.text | limitTo: 130 }}{{ idea.text.length > 130 ? '...' : ''}}</h5>
+            <p ng-if="ictrl.board" class="timestamp-author">Submitted {{ idea.created_at | moment }} by <a href="#/user/{{ idea.created_by }}">{{ idea.created_by }}</a></p>
+            <p ng-if="!ictrl.board" class="timestamp-author">Submitted {{ idea.created_at | moment }} on the <a href="#/board/{{ idea.board }}">{{ idea.board }} idea board</a></p>
+          </div>
+        </div>
+        <div class="col-md-1 ">
+          <div class="comments-wrapper">
+            <i class="fa fa-comments" ng-click="cctrl.displayComments(idea._id)"></i>
+            <p class="comments-amount">{{ idea.comments }}</p>
+          </div>
         </div>
       </div>
-      <div class="col-md-1 ">
-        <div class="comments-wrapper">
-          <i class="fa fa-comments" ng-click="cctrl.displayComments(idea._id)"></i>
-          <p class="comments-amount">{{ idea.comments }}</p>
-        </div>
+      <div class="col-md-1">
       </div>
     </div>
-    <div class="col-md-1">
-    </div>
-  </div>
-  <div ng-class="{'well':cctrl.viewingComments}">
-    <h3 ng-class="{'open':cctrl.viewingComments}" class="animate-h3 comment-header">Comments:</h3>
-    <h5 ng-if="cctrl.viewingComments && !cctrl.comments.length" class="comment-header">(There are no comments yet!)</h5>
-    <div class="animate-div" ng-class="{'open':cctrl.viewingComments && cctrl.comments.length}">
-      <div class="row" ng-repeat="comment in cctrl.comments">
-        <div class="col-md-8 col-md-offset-2">
-          <span style="font-weight: bold">{{ comment.created_by }}: </span><span>{{ comment.text }}</span>
+    <div ng-class="{'well':cctrl.viewingComments}">
+      <h3 ng-class="{'open':cctrl.viewingComments}" class="animate-h3 comment-header">Comments:</h3>
+      <h5 ng-if="cctrl.viewingComments && !cctrl.comments.length" class="comment-header">(There are no comments yet!)</h5>
+      <div class="animate-div" ng-class="{'open':cctrl.viewingComments && cctrl.comments.length}">
+        <div class="row" ng-repeat="comment in cctrl.comments">
+          <div class="col-md-8 col-md-offset-2">
+            <span style="font-weight: bold">{{ comment.created_by }}: </span><span>{{ comment.text }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="post-comment ng-cloak" ng-if="cctrl.viewingComments">
-      <form ng-submit="cctrl.submitComment(idea._id, idea)">
-        <input class="comment-form-control form-control" ng-model="cctrl.comment.text" rows="3" required></input>
-        <button type="submit" class="btn btn-default comment-submit-button">Submit</button>
-      </form>
+      <div class="post-comment ng-cloak" ng-if="cctrl.viewingComments">
+        <form ng-submit="cctrl.submitComment(idea._id, idea)">
+          <input class="comment-form-control form-control" ng-model="cctrl.comment.text" rows="3" required></input>
+          <button type="submit" class="btn btn-default comment-submit-button">Submit</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

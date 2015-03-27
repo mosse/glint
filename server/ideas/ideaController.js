@@ -6,6 +6,7 @@
 // The Q module is used to bind Mongoose methods to use promises.
 var Q = require('q');
 var Idea = require('./ideaModel.js');
+var markdown = require('markdown').markdown;
 
 module.exports = {
 
@@ -29,12 +30,18 @@ module.exports = {
     // Bind the Mongoose create method to the Idea model, so that the Q module can use promises with it.
     var createIdea = Q.nbind(Idea.create, Idea);
 
+    // Convert Markdown string into HTML to store in DB
+    var detailsMD = req.body.details || '*No details provided*';
+    var detailsHTML = markdown.toHTML(detailsMD);
+
     // Create a new document from the Idea model. If successfully created then the new Idea document is returned.
     var newIdea = {
       title: req.body.title,
       text: req.body.text,
       created_by: req.body.created_by,
-      board: req.body.board
+      board: req.body.board,
+      detailsMD: detailsMD,
+      detailsHTML: detailsHTML
     };
 
     createIdea(newIdea)

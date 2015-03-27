@@ -5,15 +5,18 @@
 
 // Our dependencies are by shared services, feature controllers, and third-party modules.
 var app = angular.module('glint', [
-  'ui.bootstrap',
   'ngAnimate',
   'glint.services',
   'glint.ideas',
   'glint.votes',
   'glint.auth',
   'glint.comments',
+  'glint.details',
+  'glint.detailsView',
+  'ngAnimate',
   'ngRoute',
-  'mgcrea.ngStrap'
+  'mgcrea.ngStrap',
+  'ui.bootstrap'
   ])
 
 // Routing configuration. Eventually, this is where the controllers for the specific views will be declared, so they don't have to be referred to in our HTML. (Eg. <varname> instead of AuthCtrl.<varname>)
