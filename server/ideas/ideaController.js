@@ -2,7 +2,7 @@
 // ---------------
 //
 // The idea controller handles requests passed from the idea router.
-var sendgrid_username = 'mjemacdonald' || process.env.SENDGRID_USERNAME;
+var sendgrid_username = '' || process.env.SENDGRID_USERNAME;
 var sendgrid_password = '' || process.env.SENDGRID_PASSWORD;
 
 
@@ -64,9 +64,9 @@ module.exports = {
 
     var invite = {
       to: req.body.email,
-      from: 'noreply@glinted.azurewebsites.net',
+      from: 'noreply@glint.azurewebsites.net',
       subject: 'Join ' + req.body.name + ' on Glint: the collaborative idea generator that bites back!',
-      text: 'Hi there!\n\nYour friend, ' + req.body.name + ' is looking for feedback on their ideas at Glint.\n\nCheck it out their Glint board here:\n\n' + req.body.boardUrl + '\n\nWith thanks from everyone at Glint.'
+      text: 'Hi there!\n\nYour friend, ' + req.body.name + ', is looking for feedback on their ideas at Glint.\n\nCheck it out their Glint board here:\n\n' + req.body.boardUrl + '\n\nWith thanks from everyone at Glint.'
     }
 
     sendgrid.send(invite, function(err, json) {
