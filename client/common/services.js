@@ -155,7 +155,6 @@ glintServices.factory('Comments', function ($http){
 
 glintServices.factory('Markdown', function ($http){
   var render = function (markdown) {
-    console.log('sending', markdown);
     return $http({
       method: 'POST',
       url: '/api/markdown',

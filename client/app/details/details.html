@@ -3,7 +3,10 @@
   <p>You can enter additional details using <a target="_blank" href="https://guides.github.com/features/mastering-markdown/">Markdown</a>! </p>
 </div>
 <div class="modal-body">
-  <textarea ng-model="markdownText"></textarea>
+  <textarea ng-show="!previewing" ng-model="markdownText"></textarea>
+  <div ng-show="previewing">
+    {{ rendered }}
+  </div>
 </div>
 <div class="modal-footer">
   <p class="preview-markdown">

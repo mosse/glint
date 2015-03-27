@@ -23,17 +23,23 @@ angular.module('glint.details', [])
 })
 
 .controller('DetailsInstanceCtrl', function($scope, $modalInstance, Markdown, idea) {
+  // user doesn't start with previewing rendered markdown
+  $scope.previewing = false;
+
   $scope.submitDetails = function() {
     idea.details = $scope.markdownText;
     $modalInstance.close();
   };
 
   $scope.cancel = function() {
-    console.log('clicked cancel');
     $modalInstance.dismiss('cancel');
   };
 
   $scope.previewMarkdown = function(text) {
-    Markdown.render(text);
+    // must use .then() due to asynchronous call
+    Markdown.render(text).then(function(data){
+      $scope.previewing = true;
+      $scope.rendered = data;
+    });
   };
 });
