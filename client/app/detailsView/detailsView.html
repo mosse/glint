@@ -3,13 +3,13 @@
   <p>{{ text }}</p>
 </div>
 <div class="modal-body">
-  <div ng-bind-html="renderedText"></div>
+  <div class="renderedText" ng-bind-html="renderedText"></div>
 </div>
 <div class="modal-footer">
   <p class="summary-info">
     created by {{ created_by }}
     on {{ board }}
-    {{ created_at | moment }}   
+    {{ created_at | moment }}
   </p>
   <button class="btn" ng-click="close()">Close</button>
 </div>

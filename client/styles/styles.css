@@ -416,20 +416,35 @@ a.glint-logo-icon:link{
  ***********************
  */
 
+.modal-content {
+  height: 660px;
+}
+
 .modal-header {
+  box-sizing: content-box;
+  height: 70px;
   padding: 10px;
   padding-bottom: 0;
+  background-color: rgb(228, 228, 228);
 }
 
 .modal-header p {
   padding-left: 5px;
 }
 
+.modal-body {
+  box-sizing: content-box;
+  height: 513px;
+  padding: 0;
+}
+
 .modal-body textarea {
   width: 100%;
-  height: 500px;
-  margin: 0 auto;
+  height: 513px;
+  margin: 0px auto;
+  padding: 10px;
   resize: none;
+  font-size: 1.5em;
 }
 .popover {
   padding: 10px !important;
@@ -438,11 +453,19 @@ a.glint-logo-icon:link{
 }
 
 .modal-body h2:first-child {
-  margin-top: 0px;
+  margin-top: -50px;
 }
 
 .modal-body img {
   width: 100%;
+}
+
+.renderedText {
+  overflow: auto;
+  height: 513px;
+  font-size: 1.5em;
+  padding: 10px;
+  padding-top: 0;
 }
 
 p.summary-info {
@@ -453,7 +476,11 @@ p.summary-info {
 }
 
 .modal-footer {
+  height: 70px;
   padding: 10px;
+  padding-top: 15px;
+  border-radius: 5px;
+  background-color: rgb(228, 228, 228);
 }
 
 .modal-footer .preview-markdown {

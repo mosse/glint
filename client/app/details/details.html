@@ -4,7 +4,7 @@
 </div>
 <div class="modal-body">
   <textarea ng-show="!previewing" ng-model="markdownText"></textarea>
-  <div ng-show="previewing" ng-bind-html="renderedText"></div>
+  <div class="renderedText" ng-show="previewing" ng-bind-html="renderedText"></div>
 </div>
 <div class="modal-footer">
   <p class="preview-markdown">
