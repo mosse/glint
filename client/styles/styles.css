@@ -408,7 +408,6 @@ a.glint-logo-icon:link{
   opacity: 1;
   height: 25px;
   transition: height 500ms cubic-bezier(0, 0.83, 0, 0.93);
-  opacity: 0;
 }
 
 /*
