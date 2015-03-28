@@ -64,7 +64,7 @@ module.exports = {
 
     var invite = {
       to: req.body.email,
-      from: 'noreply@glint.azurewebsites.net',
+      from: 'mjemacdonald@gmail.com',
       subject: 'Join ' + req.body.name + ' on Glint: the collaborative idea generator that bites back!',
       text: 'Hi there!\n\nYour friend, ' + req.body.name + ', is looking for feedback on their ideas at Glint.\n\nCheck it out their Glint board here:\n\n' + req.body.boardUrl + '\n\nWith thanks from everyone at Glint.'
     }
